@@ -40,6 +40,10 @@ class User < ActiveRecord::Base
     else  
       nil  
     end  
-  end   
+  end 
+  
+  def newcomer?
+    self.login == NEWCOMER
+  end  
   
 end
