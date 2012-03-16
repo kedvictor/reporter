@@ -6,9 +6,21 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
-</body>
+  <body> 
+  
+  <% if current_user %>
+    <%= link_to( 'Log out', logout_path)  %>
+  <% else %>
+    <%= link_to( 'Log in', login_path)  %>
+  <% end %>   
+   
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+    <% end %>
+    
+    <%= yield %>
+  
+  </body>
 </html>
+
+   
