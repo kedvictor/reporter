@@ -1,0 +1,25 @@
+<h3><%= '2012-03-18' %></h3>
+
+<table style="border:1px solid black">
+  <tr>
+    <th>id</th>
+    <th>Activity time</th>
+    <th>User login</th>
+    <th>Project title</th>
+    <th>Date</th>
+    <th>Spending time</th>
+    <th>Short description</th>
+  </tr>
+  <% @records.each do |rec| %>
+    <tr>
+      <td> <%= rec.id %></td>
+      <td> <%= rec.activity.activity %></td>
+      <td> <%= rec.user.name %></td>
+      <td> <%= rec.project.title %></td>
+      <td> <%= rec.date %></td>
+      <td> <%= rec.time %></td>
+      <td> <%= rec.description %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to "Add record", new_record_path %>

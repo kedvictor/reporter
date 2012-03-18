@@ -13,6 +13,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'annotate', '~> 2.4.1.beta'
 
 
 group :test, :development do

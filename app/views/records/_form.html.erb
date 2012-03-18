@@ -1,0 +1,29 @@
+<%= form_for @record do |f| %>
+ 
+  <p>
+    <%= f.label :project %>
+    <%= f.collection_select :project_id, Project.all, :id, :title %> 
+  </p>
+  
+  <p>
+    <%= f.label :activity %>
+    <%= f.collection_select :activity_id, Activity.all, :id, :activity %> 
+  </p>
+  
+  <p>
+    <%= f.label :time %>
+    <%= f.time_select :time %> 
+  </p>
+  
+  <p>
+    <%= f.label :date %>
+    <%= f.date_select :date %> 
+  </p>
+  
+  <p>
+    <%= f.label :description %>
+    <%= f.text_area :description %> 
+  </p>
+  
+  <%= f.submit %>
+<% end %>
