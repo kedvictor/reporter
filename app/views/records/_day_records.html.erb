@@ -1,0 +1,32 @@
+<% totals_str = '' %>
+<% for time in Activity.all do %>
+  <%= time.activity %>
+  <% total = 0 %>
+  <table width="100%" style="border: 1px solid black">
+    <tr>
+      <th>Project</th>
+      <th>Activity</th>
+      <th>Time</th>
+    </tr>    
+      
+      <% if records %>
+        <% records.each do |record| %>
+        
+          <% if record.activity.activity == time.activity %>
+            <tr>
+            <td><%= record.project.title%></td>
+            <td><%= record.description %></td>
+            <td><%= Time.new(record.time.minutes).strftime('%H:%M') %></td>
+            </tr> 
+            <% total += record.time %>
+          <% end %>
+        <% end %>  
+      <% end %>    
+   
+  </table>
+  Total: <%= Time.at(total).strftime('%H:%M') %>
+  <% totals_str << "#{Time.at(total).strftime('%H:%M')} #{time.activity.downcase}/ "%>
+  <br />
+<% end %>
+Totals for day: <%= totals_str%>
+

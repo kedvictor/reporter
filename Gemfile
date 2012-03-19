@@ -14,6 +14,7 @@ end
 
 gem 'jquery-rails'
 gem 'annotate', '~> 2.4.1.beta'
+gem "watu_table_builder", :require => "table_builder"
 
 
 group :test, :development do

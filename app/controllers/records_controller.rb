@@ -1,11 +1,14 @@
 class RecordsController < ApplicationController
   
   def index
-    @records = Record.where( :user_id => current_user.id )
+    @date = params[:date] ? Date.strptime(params[:date], "%Y-%m-%d") : Date.today 
+    @records = Record.where( :user_id => current_user.id, 
+      :date => (@date.beginning_of_month..@date.end_of_month))
+    params[:view] ? @view = 'consolidated' : nil         
   end
 
   def new
-    @record = Record.new
+    @record = Record.new :date => params[:date]
   end
   
   def create
