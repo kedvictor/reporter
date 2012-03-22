@@ -6,7 +6,24 @@ class Record < ActiveRecord::Base
   
   validates :user_id, :project_id, :activity_id, 
             :date, :time, :presence => true 
-
+  
+  validates_format_of :time_before_type_cast, :with => /^[\d]{1,2}:[\d]{1,2}$/  
+  
+  before_save :time_to_integer 
+  
+  private  
+ 
+    def time_to_integer
+      h,m = self.time_before_type_cast.split(':')
+      hours, minutes = h.to_i, m.to_i      
+      if (hours > 23) or (minutes > 59)
+        errors.add(:time, 'hours must be least of 24 and minutes least of 60')
+        false
+      else
+        write_attribute(:time, (hours * 60) + minutes) 
+      end   
+    end 
+    
 end
 
 # == Schema Information

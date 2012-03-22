@@ -1,6 +1,7 @@
+ <div id="calendar">
  <h2 id="month">
     <%= link_to "<", records_path(:date => (@date.beginning_of_month-1).strftime("%Y-%m-%d")) %>
-    <%=h @date.strftime("%B %Y") %>
+    <%= @date.strftime("%B %Y") %>
     <%= link_to ">", records_path(:date => (@date.end_of_month+1).strftime("%Y-%m-%d")) %>
   </h2>
 
@@ -8,27 +9,32 @@
   <%= t.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 
     'Friday', 'Saturday') %>
   <%= t.day(:day_method => :date) do |date,records| %>
-    <%= link_to date.day, records_path(:date => date) %>
     <% if (date == @date) %>
-      <% @day_records = records %>      
-    <% end %>
-    <% records.each do |rec| %>
-      <%= rec.id %>
-    <% end %>
+      <% @day_records = records %> 
+      <% sel = 'current'%> 
+    <% else %>
+      <% sel = 'no' %>       
+    <% end %>    
+    <%= link_to date.day, records_path(:date => date), :class => "#{sel}" %>    
+    
   <% end %>
 <% end %>
+</div>
 
-<br /><br />
-
-<p> <%= "@date = #{@date}" %></p>
-
-<%= link_to "Add record", new_record_path(:date => @date) %>
-<%= link_to "Consolidated report", 
-  records_path(:date => @date, :view => 'consolidated') %>
-<br /><br />
 <% unless @view %>
+  <h4 class="inline">Activities for <strong><%= "#{@date.strftime("%d %B %Y (%A)")}" %></strong></h4>
+  <div class="inline>"><%= link_to "Add record", new_record_path(:date => @date) %> |
+ <%= link_to "Consolidated report", 
+    records_path(:date => @date, :view => 'consolidated') %></div>
+  <br />
   <%= render :partial => 'day_records', :locals => { :records => @day_records } %>
-<% else %>
+  <br />
+  <%= link_to "Add record", new_record_path(:date => @date) %>  
+  <%= link_to "Consolidated report", 
+  records_path(:date => @date, :view => 'consolidated') %>  
+<% else %>  
+  <h4>Consolidated report for <%= @date.strftime("%B %Y") %></h4><br />
+  <%= link_to "Back", records_path(:date => @date) %><br />
   <% @date.beginning_of_month.upto @date.end_of_month do |date| %>
     <% collection = [] %>
     <% @records.each {|rec| collection << rec if rec.date == date} %>
@@ -41,5 +47,8 @@
     <br /><br />
     <% end %>
   <% end %>
+  <%= link_to "Back", records_path(:date => @date) %><br />
 <% end %>
+<br />
+
 

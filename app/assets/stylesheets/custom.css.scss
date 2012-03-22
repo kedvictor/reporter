@@ -1,0 +1,52 @@
+
+div.container {
+  min-height: 500px;
+  background: #f8f8f8; 
+  margin-top: 10px; 
+}
+
+div.inner {
+  padding: 5px;
+}
+
+#header {
+  background: #ECC87A;
+  height: 70px; 
+}
+
+#title a, #title a:link, #title a:visited, #title a:hover, #title a:active {
+  text-decoration: none;
+  color: #000000; 
+  font-size: 2em;
+}
+
+#auth {
+  background: #ECC87A;
+  height: 70px;  
+  text-align: right;  
+}
+
+#flash {
+  margin-top: 5px; 
+}
+
+#main {
+  margin-top: 5px;
+  background: #DCCCAA;
+  min-height: 500px; 
+}
+
+#footer {
+  background: #827259; 
+  color: #ffffff;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 27px;
+  text-align: center;
+}
+
+#footer a, #footer a:hover, #footer a:active, {
+  text-decoration: underline;
+  color: #ffffff;  
+}
+

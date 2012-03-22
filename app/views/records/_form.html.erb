@@ -1,4 +1,16 @@
+
 <%= form_for @record do |f| %>
+ 
+  <% if @record.errors.any? %>  
+    <div class="error_messages">  
+      <h2>Form is invalid</h2>  
+      <ul>  
+        <% for message in @record.errors.full_messages %>  
+          <li><%= message %></li>  
+        <% end %>  
+      </ul>  
+    </div>  
+  <% end %>  
  
   <p>
     <%= f.label :project %>
@@ -13,17 +25,14 @@
   <p>
     <%= f.label :time %>
     <%= f.text_field :time %> 
-  </p>
-  
-  <p>
-    <%= f.label :date %>
-    <%= f.date_select :date %> 
-  </p>
+  </p> 
   
   <p>
     <%= f.label :description %>
     <%= f.text_area :description %> 
   </p>
+  
+    <%= hidden_field_tag "record[date]", @record.date %>
   
   <%= f.submit %>
 <% end %>

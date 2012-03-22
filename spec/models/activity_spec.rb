@@ -1,8 +1,13 @@
 require 'spec_helper'
 
 describe Activity do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  it "contains 'self development' item" do
+    activities = Factory :activity
+    Activity.find_by_activity("Self development").should_not be_nil
+  end  
 end
+
 # == Schema Information
 #
 # Table name: activities

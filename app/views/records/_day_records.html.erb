@@ -1,12 +1,12 @@
 <% totals_str = '' %>
 <% for time in Activity.all do %>
-  <%= time.activity %>
+  <strong><%= time.activity %></strong>
   <% total = 0 %>
-  <table width="100%" style="border: 1px solid black">
-    <tr>
-      <th>Project</th>
-      <th>Activity</th>
-      <th>Time</th>
+  <table>
+    <tr class="no_decoration">
+      <th width="30%">Project</th>
+      <th width="50">Activity</th>
+      <th width="20%">Time</th>
     </tr>    
       
       <% if records %>
@@ -14,9 +14,9 @@
         
           <% if record.activity.activity == time.activity %>
             <tr>
-            <td><%= record.project.title%></td>
-            <td><%= record.description %></td>
-            <td><%= Time.new(record.time.minutes).strftime('%H:%M') %></td>
+              <td><%= record.project.title%></td>
+              <td><%= record.description %></td>
+              <td><%= minutes_to_str(record.time) %></td>
             </tr> 
             <% total += record.time %>
           <% end %>
@@ -24,9 +24,12 @@
       <% end %>    
    
   </table>
-  Total: <%= Time.at(total).strftime('%H:%M') %>
-  <% totals_str << "#{Time.at(total).strftime('%H:%M')} #{time.activity.downcase}/ "%>
+  <div class="total">
+    Total: <%= minutes_to_str(total) %>
+  </div>
+  <% totals_str << "#{minutes_to_str(total)} #{time.activity.downcase} | "%>
   <br />
 <% end %>
-Totals for day: <%= totals_str%>
-
+<div class="day_totals">
+  Totals for day: <%= totals_str%>
+</div>

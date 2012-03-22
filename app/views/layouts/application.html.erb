@@ -2,24 +2,64 @@
 <html>
 <head>
   <title>Reporter</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
   <body> 
-  
-  <% if current_user %>
-    <%= link_to( 'Log out', logout_path)  %>
-  <% else %>
-    <%= link_to( 'Log in', login_path)  %>
-  <% end %>   
+    <div class="container">
+      
+      <div id="header" class="span-15 prepend-1">
+        <div class="inner">
+          <div id='title'>
+            <a href="/">ACTIVITY REPORTER</a> <br />
+            This is a nice way to spice up some web things as well as
+            gather great experience ...
+          </div> 
+         </div>      
+       </div>
    
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-    <% end %>
-    
-    <%= yield %>
-  
+       <div id="auth" class="span-8 last">
+         <div class="inner">   
+           <% if current_user %>
+            <% if current_user.newcomer? %>
+              <%= "Registered as #{current_user.login} " %> |
+            <% else %>
+               <%= "Welcome, #{current_user.name} " %> |
+            <% end %>
+            <%= link_to( 'Log out', logout_path)  %>
+          <% else %>
+            There are no authenticated users | 
+            <%= link_to( 'Log in', login_path)  %>
+          <% end %>   
+         </div>
+      </div> 
+      
+      <div id="flash" class="span-24 last">  
+        <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :class => "#{name}" if msg.is_a?(String) %>
+        <% end %>
+      </div>   
+      
+      <div id="main" class="span-24 last">
+        <div class="inner">
+          
+          <%= yield %>
+          
+        </div>     
+      </div>      
+     
+      <div id="footer" class="span-24 last">
+        <div class="inner">
+        Copyright © 2012 - All Rights Reserved | 
+        Design: Victor Kedyulich |
+        <%= mail_to("kedvictor@gmail.com" , "Contact Support",
+          :subject => "Support question",
+          :encode => "javascript") %> 
+         </div>
+       </div> 
+           
+    </div>
   </body>
 </html>
 

@@ -1,2 +1,36 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+
+<p> This is a small application aimed for creating and storing
+reports for programmers time activities. </p>
+<p>It works with four different types of activities: </p>
+<ul>
+  <li>self development</li>
+  <li>working time</li>
+  <li>extra time</li>
+  <li>team time</li>
+</ul>
+<p>Self development time is time spent on learning of new programming tools,
+enhancement of level of foreign language, motivation practicies,
+trainings etc.</p>
+<p>Working time is time spent for officially assigned projects inside 
+40 hours per week</p>
+<p>Extra time is time spent for officially assigned projects outside
+40 houls per week.</p>
+<p>Team support time is time spent not on projects directly but
+on development of team. For example: conducting trainings,  presentations
+of new tools and technologies, conducting of trainee exams, 
+perfomance review etc.</p>
+<p> If you are first time in the system you should know password 
+for newcomer. This password given to you by administrative personal.
+Please, <%= mail_to 'kedvictor@gmail.com', "contact us" %> for 
+newcomer password. If you do so, you may 
+<%= link_to "Log in", login_path%> to the system with 'newcomer' login 
+as defaults. After this operation you may go to 
+<%= link_to 'registration page', register_path %>, where you left you
+new login, name, email, position and new secret password know only by you.</p>
+<p>If you are already registered user then follow to 
+<%= link_to "Log in", login_path %> page and retype you actual login and enter 
+your password. </p>
+
+
+
+

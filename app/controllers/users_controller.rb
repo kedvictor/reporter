@@ -22,7 +22,8 @@ class UsersController < ApplicationController
     def for_newcomer_only
       unless current_user && current_user.newcomer?
       redirect_to login_path, 
-        :notice => "Only newcomer have access to this operation"
+        :notice => "Only newcomer have access to this operation. Please, enter
+          your password for newcomers."
       end  
     end
     
