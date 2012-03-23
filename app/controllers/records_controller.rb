@@ -1,6 +1,6 @@
 class RecordsController < ApplicationController
   
-  #before_filter :authenticate
+  before_filter :authenticate
   
   def index
     @date = params[:date] ? Date.strptime(params[:date], "%Y-%m-%d") : Date.today 
