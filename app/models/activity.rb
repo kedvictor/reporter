@@ -1,8 +1,8 @@
 class Activity < ActiveRecord::Base
 
   has_many :records
-  
-  validates :activity, :presence => true
+
+  validates :activity, :presence => true, :uniqueness => true
 
 end
 
