@@ -1,7 +1,19 @@
 
   Reporter - personal reporting time tool
-  
+
   Developed by Victor Kedyulich
   kedvictor@gmail.com
-  
+
   March, 2012
+
+
+  git clone git@github.com:kedvictor/reporter.git
+  bundle
+  bundle exec rake db:migrate
+  bundle exec rake db:seed
+  bundle exec rake db:test:prepare
+  bundle exec rake db:test:populate
+  rails server
+
+	bundle exec rspec -f d spec
+

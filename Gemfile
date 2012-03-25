@@ -18,14 +18,15 @@ gem "watu_table_builder", :require => "table_builder"
 gem "blueprint-rails"
 
 
-group :test, :development do
+group :test do
   gem "rspec-rails", "~> 2.6"
-  gem 'cucumber-rails'  
+  gem 'cucumber-rails'
   gem 'database_cleaner'
-  gem 'factory_girl_rails' 
-  gem 'spork' 
-  gem 'webrat' 
-  gem 'capybara' 
-  gem 'gherkin'  
-  gem 'launchy'    
+  gem 'factory_girl_rails'
+  gem 'spork'
+  gem 'webrat'
+  gem 'capybara'
+  gem 'gherkin'
+  gem 'launchy'
 end
+

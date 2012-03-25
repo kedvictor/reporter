@@ -35,6 +35,18 @@ end
     puts "============================================================="
     puts
 
+  def description
+    ['Users model and controller created',
+      'Basic authentication system added',
+      'Writes some specs and features',
+      'Validations for products added',
+      'CSS stylesheets designed',
+      'Specs code heavy refactored',
+      'Database design completed',
+      'Edge version of Rails learned',
+      'Some bugs fixed and new one written']
+  end
+
   @activities = Activity.all
   @projects = Project.all
   @user = User.find_by_login "user"
@@ -48,7 +60,7 @@ end
           :user_id => @user.id,
           :date => date,
           :time => "#{rand(0..4)}:#{rand(0..59)}",
-          :description => 'description'
+          :description => description.sample
         )
      end
     end
