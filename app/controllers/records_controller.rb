@@ -24,24 +24,24 @@ class RecordsController < ApplicationController
     end
   end
   
-  def edit
-    @record = Record.find params[:id]
-  end
+  #def edit
+    #@record = Record.find params[:id]
+  #end
   
-  def update
-    @record = Record.find params[:id]
-    if @record.update_attributes params[:record]
-      #flash[:notice] = 'Record successfully changed'
-      redirect_to records_path
-    else
-      render :edit
-    end
-  end
+  #def update
+    #@record = Record.find params[:id]
+    #if @record.update_attributes params[:record]
+      ##flash[:notice] = 'Record successfully changed'
+      #redirect_to records_path
+    #else
+      #render :edit
+    #end
+  #end
   
-  def destroy
-    @record = Record.find params[:id]
-    @record.destroy
-    redirect_to records_path
-  end 
+  #def destroy
+    #@record = Record.find params[:id]
+    #@record.destroy
+    #redirect_to records_path
+  #end 
   
 end

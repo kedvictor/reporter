@@ -22,7 +22,8 @@
 </div>
 
 <% unless @view %>
-  <h4 class="inline">Activities for <strong><%= "#{@date.strftime("%d %B %Y (%A)")}" %></strong></h4>
+  <h4 class="inline">Activities for <%= current_user.name %> on 
+  <strong><%= "#{@date.strftime("%d %B %Y (%A)")}" %></strong></h4>
   <div class="inline>"><%= link_to "Add record", new_record_path(:date => @date) %> |
  <%= link_to "Consolidated report", 
     records_path(:date => @date, :view => 'consolidated') %></div>

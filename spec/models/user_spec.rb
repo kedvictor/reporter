@@ -67,7 +67,41 @@ describe User do
     end
   end
   
+  describe "#authentificate" do
+    
+    before :each do
+      @stored_user = User.create(@valid_params)
+    end
+    
+    it "returns user if login and password match" do      
+      authenticated_user = User.authenticate('johnsilver','johnsilver')
+      authenticated_user.should == @stored_user  
+    end
+    
+    it "returns nil if login dont match" do      
+      authenticated_user = User.authenticate('john','johnsilver')
+      authenticated_user.should be_nil
+    end
+    
+    it "returns nil if password dont match" do      
+      authenticated_user = User.authenticate('johnsilver','silverjohn')
+      authenticated_user.should be_nil
+    end
+  end
   
+  describe "#newcomer?" do
+  
+    it "should be true if login is 'newcomer'" do
+      user = User.authenticate('newcomer','neofit')
+      user.should be_newcomer
+    end
+    
+    it "should be false if login is not 'newcomer'" do
+      User.create @valid_params
+      user = User.authenticate('johnsilver','johnsilver')
+      user.should_not be_newcomer
+    end
+  end  
 end
 
 # == Schema Information

@@ -29,4 +29,26 @@ RSpec.configure do |config|
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
+  
+  def test_sign_in_as_newcomer
+    user = User.authenticate('newcomer','neofit')
+    session[:user_id] = user.id 
+  end
+  
+  def test_sign_in_as_user
+    User.create(
+      :login => 'johnsilver',
+      :name => 'John Silver',
+      :email => 'john@example.com',
+      :position => 'programmer',
+      :password => 'johnsilver',
+      :password_confirmation => 'johnsilver')
+    user = User.authenticate('johnsilver','johnsilver')
+    session[:user_id] = user.id 
+  end
+  
+  def test_sign_out
+    session[:user_id] = nil
+  end 
+  
 end

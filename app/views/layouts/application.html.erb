@@ -24,6 +24,7 @@
            <% if current_user %>
             <% if current_user.newcomer? %>
               <%= "Registered as #{current_user.login} " %> |
+              <%= link_to "Registration", register_path %> | 
             <% else %>
                <%= "Welcome, #{current_user.name} " %> |
             <% end %>

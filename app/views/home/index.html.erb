@@ -14,7 +14,7 @@ trainings etc.</p>
 <p>Working time is time spent for officially assigned projects inside 
 40 hours per week</p>
 <p>Extra time is time spent for officially assigned projects outside
-40 houls per week.</p>
+40 hours per week.</p>
 <p>Team support time is time spent not on projects directly but
 on development of team. For example: conducting trainings,  presentations
 of new tools and technologies, conducting of trainee exams, 
@@ -31,6 +31,7 @@ new login, name, email, position and new secret password know only by you.</p>
 <%= link_to "Log in", login_path %> page and retype you actual login and enter 
 your password. </p>
 
+<p><%= link_to("Main page", records_path) if current_user and not current_user.newcomer?%></p>
 
 
 

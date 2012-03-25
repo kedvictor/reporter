@@ -7,13 +7,13 @@ class SessionsController < ApplicationController
     
     if user && user.newcomer? 
       session[:user_id] = user.id     
-      return redirect_to register_path, :notice => 'Please, register now'
+      return redirect_to root_path, :notice => 'You may register now.'
     end
     
     if user  
       session[:user_id] = user.id       
       redirect_to records_path
-      #, :notice => "Logged in."
+      # :notice => "Logged in."
     else  
       flash.now.alert = "Invalid email or password"  
       render "new"  
