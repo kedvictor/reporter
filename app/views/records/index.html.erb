@@ -1,9 +1,23 @@
  <div id="calendar">
- <h2 id="month">
+ <div class='clear'>
+ <div class='span-7 prepend-1 left'>	 
+	<%= link_to_today @date %> 
+ </div>
+ 
+ <h2 id="month" class='left'>
     <%= link_to "<", records_path(:date => (@date.beginning_of_month-1).strftime("%Y-%m-%d")) %>
     <%= @date.strftime("%B %Y") %>
     <%= link_to ">", records_path(:date => (@date.end_of_month+1).strftime("%Y-%m-%d")) %>
-  </h2>
+ </h2>
+
+<div class='span-8 left'>
+  <%= form_tag records_path, :method => :get do %>
+	
+	<%= submit_tag "View" %>
+  <% end %>	
+</div>
+</div>
+
 
 <%= calendar_for(@records, :year => @date.year, :month => @date.month) do |t| %>
   <%= t.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 

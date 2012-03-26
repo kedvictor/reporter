@@ -110,6 +110,18 @@ describe RecordsController do
         response.should have_selector :div, :class => 'total',
           :content => "Total: 01:50"
       end
+      
+      it "contains <Today> link if current date is not today" do
+		get :index, :date => Date.today - 1.day
+		response.should have_selector :a, 
+		  :href => records_path(:date => Date.today)
+      end
+      
+      it "contains <Today> text if current date is today" do
+		get :index, :date => Date.today
+		response.should contain('Today')
+      end
+      
     end
   end
 
