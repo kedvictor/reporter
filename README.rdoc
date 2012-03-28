@@ -5,7 +5,7 @@
 
   March, 2012
 
-  	Usage:
+  Usage:
 
   git clone git@github.com:kedvictor/reporter.git
   bundle
@@ -14,12 +14,12 @@
   #bundle exec rake db:test:prepare
   bundle exec rake db:test:populate
  
-  	bundle exec rspec -f d spec
+  bundle exec rspec -f d spec
   bundle exec cucumber
   rails server
   
   
-  	Password for newcomer: 'neofit'
+  Password for newcomer: 'neofit'
     
   Prepopulated data exists for predefined user:
   
