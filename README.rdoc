@@ -6,14 +6,24 @@
 
   March, 2012
 
+  Usage:
 
   git clone git@github.com:kedvictor/reporter.git
   bundle
   bundle exec rake db:migrate
   bundle exec rake db:seed
-  bundle exec rake db:test:prepare
+  #bundle exec rake db:test:prepare
   bundle exec rake db:test:populate
-  rails server
-
+ 
 	bundle exec rspec -f d spec
+  bundle exec cucumber
+  rails server
+  
+  
+  Password for newcomer: 'neofit'
+    
+  Prepopulated data exists for predefined user:
+  
+  login:    'user'
+  password: 'superuser'
 

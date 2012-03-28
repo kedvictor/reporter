@@ -14,13 +14,11 @@
   <%= form_tag records_path, :method => :get do %>
   Select date: 
 	<%= select_date Date.today, :prefix => 'date', 
-    :default => {:year => @date.year}, :start_year => 2000 %>
-    
+    :default => {:year => @date.year}, :start_year => 2000 %>    
 	<%= submit_tag "Go" %>
   <% end %>	
 </div>
 </div>
-
 
 <%= calendar_for(@records, :year => @date.year, :month => @date.month) do |t| %>
   <%= t.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 
