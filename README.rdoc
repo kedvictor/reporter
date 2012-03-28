@@ -8,6 +8,7 @@
   Usage:
 
   git clone git@github.com:kedvictor/reporter.git
+  cd reporter
   bundle
   bundle exec rake db:migrate
   bundle exec rake db:seed
