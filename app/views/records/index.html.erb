@@ -10,10 +10,13 @@
     <%= link_to ">", records_path(:date => (@date.end_of_month+1).strftime("%Y-%m-%d")) %>
  </h2>
 
-<div class='span-8 left'>
+<div class='span-8 prepend-1 left'>
   <%= form_tag records_path, :method => :get do %>
-	
-	<%= submit_tag "View" %>
+  Select date: 
+	<%= select_date Date.today, :prefix => 'date', 
+    :default => {:year => @date.year}, :start_year => 2000 %>
+    
+	<%= submit_tag "Go" %>
   <% end %>	
 </div>
 </div>

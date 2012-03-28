@@ -5,11 +5,11 @@ module RecordsHelper
   end
 
   def link_to_today(date = nil)
-	unless date == Date.today
-	  link_to "Today", records_path(:date => Date.today)	  
-	else
-	  "Today"
-	end
+    unless date == Date.today
+      link_to "Today", records_path(:date => Date.today)	  
+    else
+      "Today activities"
+    end
   end
 end
 

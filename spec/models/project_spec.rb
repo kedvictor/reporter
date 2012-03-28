@@ -4,7 +4,7 @@ describe Project do
 
   it "stores valid instance to database" do
     expect{Project.create(
-      :title => 'Project')}.to change{Project.count}.from(0).to(1)
+      :title => 'Project')}.to change{Project.count}.by 1
   end
   
   it "needs presence of 'title'" do

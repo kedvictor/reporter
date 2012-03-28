@@ -16,6 +16,8 @@ def initial_data
   ('Self development,Working time,Extra time,Team time').split(',').each do |a|
     Activity.create :activity => a
   end
+  
+  Project.create :title => "NA"
 
   User.create(
     :login => 'newcomer',

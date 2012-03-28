@@ -3,7 +3,7 @@ class RecordsController < ApplicationController
   before_filter :authenticate
   
   def index
-    @date = params[:date] ? Date.strptime(params[:date], "%Y-%m-%d") : Date.today 
+    @date = set_date(params[:date])    
     @records = Record.where( :user_id => current_user.id, 
       :date => (@date.beginning_of_month..@date.end_of_month))   
     params[:view] ? @view = 'consolidated' : nil         
@@ -24,24 +24,11 @@ class RecordsController < ApplicationController
     end
   end
   
-  #def edit
-    #@record = Record.find params[:id]
-  #end
-  
-  #def update
-    #@record = Record.find params[:id]
-    #if @record.update_attributes params[:record]
-      ##flash[:notice] = 'Record successfully changed'
-      #redirect_to records_path
-    #else
-      #render :edit
-    #end
-  #end
-  
-  #def destroy
-    #@record = Record.find params[:id]
-    #@record.destroy
-    #redirect_to records_path
-  #end 
+  private
+    
+    def set_date( date )      
+      return date = Date.parse("#{date[:year]}-#{date[:month]}-#{date[:day]}") if date.is_a? Hash     
+      date ? Date.strptime(date, "%Y-%m-%d") : Date.today 
+    end  
   
 end
