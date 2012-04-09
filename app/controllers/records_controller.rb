@@ -3,10 +3,8 @@ class RecordsController < ApplicationController
   before_filter :authenticate
   
   def index
-    @date = set_date(params[:date])
-    # move to model
-    @records = Record.where( :user_id => current_user.id, 
-      :date => (@date.beginning_of_month..@date.end_of_month))   
+    @date = set_date(params[:date])   
+    @records = Record.for_user_and_date(current_user,@date)  
     params[:view] ? @view = 'consolidated' : nil         
   end
 
@@ -15,9 +13,7 @@ class RecordsController < ApplicationController
   end
   
   def create
-    #current_user.record.build params[:record]
-    @record = Record.new params[:record]
-    @record.user = current_user   
+    @record = current_user.records.build params[:record]    
     if @record.save
       #flash[:notice] = 'Record successfully created'
       redirect_to records_path(:date => @record.date)

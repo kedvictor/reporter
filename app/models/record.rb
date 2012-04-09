@@ -11,6 +11,11 @@ class Record < ActiveRecord::Base
   
   before_save :time_to_integer 
   
+  def self.for_user_and_date(user,date)  
+    where( :user_id => user.id, 
+      :date => (date.beginning_of_month..date.end_of_month))  
+  end
+  
   private  
  
     def time_to_integer

@@ -11,5 +11,9 @@ module RecordsHelper
       "Today activities"
     end
   end
+  
+  def records_for_date(records,date)   
+    records.select{ |rec| rec.date == date}
+  end
 end
 

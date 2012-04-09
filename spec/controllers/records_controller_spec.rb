@@ -254,7 +254,7 @@ describe RecordsController do
         end
 
         it "assigns record for current user" do
-          post :create, :record => @params
+          post :create, :record => @params.merge(:user_id => controller.current_user.id)
           assigns(:record).user.should == controller.current_user
         end
 

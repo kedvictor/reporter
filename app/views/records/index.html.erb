@@ -51,10 +51,11 @@
 <% else %>  
   <h4>Consolidated report for <%= @date.strftime("%B %Y") %></h4><br />
   <%= link_to "Back", records_path(:date => @date) %><br />
-  <% @date.beginning_of_month.upto @date.end_of_month do |date| %>
-    <% collection = [] %>
-    <% @records.each {|rec| collection << rec if rec.date == date} %>
+  
+  <% @date.beginning_of_month.upto @date.end_of_month do |date| %>    
+    <% collection = records_for_date(@records,date) %>    
     <%= date %>
+    
     <% if collection.blank? %>
      <%= " - no activity" %><br /> 
      <% else %>
